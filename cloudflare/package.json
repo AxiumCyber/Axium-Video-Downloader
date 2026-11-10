@@ -1,0 +1,1 @@
+{"name":"axium-video-downloader-cloudflare","private":true,"type":"module","scripts":{"dev":"wrangler dev","deploy":"wrangler deploy","typecheck":"tsc --noEmit","db:remote":"wrangler d1 execute axium-video-downloader --remote --file=db/schema.sql"},"devDependencies":{"@cloudflare/workers-types":"^4.20261109.0","typescript":"^5.9.3","wrangler":"^4.50.0"}}
