@@ -1,11 +1,23 @@
 {
-  "manifest_version":3,
-  "name":"Axium Video Downloader",
-  "version":"1.0.0",
-  "description":"Detect direct media files and download them with Chrome's native download manager.",
-  "permissions":["webRequest","downloads","storage","activeTab"],
-  "host_permissions":["http://*/*","https://*/*"],
-  "background":{"service_worker":"background.js"},
-  "action":{"default_popup":"popup.html","default_title":"Axium Downloader"},
-  "content_scripts":[{"matches":["http://*/*","https://*/*"],"js":["content.js"],"run_at":"document_idle"}]
+  "manifest_version": 3,
+  "name": "Axium Video Downloader",
+  "version": "1.0.0",
+  "description": "Detect direct media files and download them with Chrome's native download manager.",
+  "permissions": [
+    "webRequest",
+    "downloads",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Axium Downloader"
+  }
 }
