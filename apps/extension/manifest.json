@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Axium Media Capture",
+  "version": "0.1.0",
+  "description": "Detect standard media URLs on pages you visit and send them to your Axium downloader workspace.",
+  "permissions": [
+    "storage",
+    "downloads",
+    "activeTab",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_title": "Axium Media Capture",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

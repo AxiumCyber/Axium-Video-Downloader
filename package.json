@@ -1,0 +1,17 @@
+{
+  "name": "axium-video-downloader",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web",
+    "apps/api"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @axium/web\" \"npm run dev -w @axium/api\"",
+    "build": "npm run build -w @axium/web && npm run build -w @axium/api",
+    "typecheck": "npm run typecheck -w @axium/web && npm run typecheck -w @axium/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
