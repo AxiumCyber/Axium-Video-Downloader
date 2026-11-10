@@ -1,0 +1,5 @@
+const media=/\.(mp4|webm|mov|m4v|mp3|m4a|ogg|wav|aac)(?:$|[?#])/i;
+const tabs=new Map();
+chrome.webRequest.onCompleted.addListener(d=>{if(d.tabId<0||!media.test(d.url))return;const a=tabs.get(d.tabId)||[];if(!a.some(x=>x.url===d.url)){a.unshift({url:d.url,type:d.type});tabs.set(d.tabId,a.slice(0,40));chrome.storage.local.set({["tab_"+d.tabId]:a.slice(0,40)});}}, {urls:["http://*/*","https://*/*"]});
+chrome.tabs.onRemoved.addListener(id=>{tabs.delete(id);chrome.storage.local.remove("tab_"+id);});
+chrome.runtime.onMessage.addListener((m,s,r)=>{if(m.type==="list"){chrome.storage.local.get("tab_"+m.tabId).then(x=>r(x["tab_"+m.tabId]||[]));return true;}if(m.type==="download"){chrome.downloads.download({url:m.url,saveAs:true}).then(id=>r({ok:true,id})).catch(e=>r({ok:false,error:e.message}));return true;}});
