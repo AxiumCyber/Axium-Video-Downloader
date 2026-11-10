@@ -1,0 +1,12 @@
+{
+  "$schema":"node_modules/wrangler/config-schema.json",
+  "name":"axium-video-downloader",
+  "main":"src/index.ts",
+  "compatibility_date":"2026-11-09",
+  "workers_dev":true,
+  "assets":{"directory":"./public","binding":"ASSETS","run_worker_first":["/api/*"]},
+  "d1_databases":[{"binding":"DB","database_name":"axium-video-downloader","database_id":"REPLACE_WITH_D1_DATABASE_ID"}],
+  "r2_buckets":[{"binding":"MEDIA","bucket_name":"axium-video-downloader-media"}],
+  "queues":{"producers":[{"binding":"DOWNLOAD_QUEUE","queue":"axium-video-downloads"}],"consumers":[{"queue":"axium-video-downloads","max_batch_size":5,"max_retries":3}]},
+  "vars":{"APP_ORIGIN":"https://downloader.axiumcyber.com","MAX_DOWNLOAD_BYTES":"104857600"}
+}
